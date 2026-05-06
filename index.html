@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #e9ecef;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #dee2e6;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .urls-section {
+            margin-top: 30px;
+        }
+
+        .section-title {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .url-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .url-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .url-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            word-break: break-word;
+        }
+
+        .url-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 13px;
+            word-break: break-all;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .url-link:hover {
+            text-decoration: underline;
+        }
+
+        .url-description {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .url-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .url-actions button {
+            flex: 1;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #999;
+            padding: 30px 20px;
+            font-size: 14px;
+        }
+
+        .stats {
+            background: #e7f3ff;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            color: #0066cc;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #0066cc;
+        }
+
+        #importFile {
+            display: none;
+        }
+
+        .utility-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .utility-buttons button {
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .button-group,
+            .utility-buttons {
+                flex-direction: column;
+            }
+
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 Private Homepage</h1>
+        <p class="subtitle">Manage your URLs locally - Nothing is sent to any server</p>
+
+        <div class="utility-buttons">
+            <button class="btn-success" onclick="exportData()">📥 Export Data</button>
+            <button class="btn-success" onclick="document.getElementById('importFile').click()">📤 Import Data</button>
+            <button class="btn-danger" onclick="clearAllData()">🗑️ Clear All</button>
+        </div>
+        <input type="file" id="importFile" accept=".json" onchange="importData(event)">
+
+        <div class="stats" id="stats"></div>
+
+        <div class="form-section">
+            <h2 style="color: #333; margin-bottom: 20px; font-size: 18px;">Add New URL</h2>
+
+            <div class="form-group">
+                <label for="title">Title *</label>
+                <input type="text" id="title" placeholder="e.g., GitHub" required>
+            </div>
+
+            <div class="form-group">
+                <label for="url">URL *</label>
+                <input type="url" id="url" placeholder="e.g., https://github.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description (optional)</label>
+                <textarea id="description" placeholder="Add a note about this URL..."></textarea>
+            </div>
+
+            <div class="button-group">
+                <button class="btn-primary" onclick="addUrl()">Add URL</button>
+                <button class="btn-secondary" onclick="resetForm()">Clear</button>
+            </div>
+        </div>
+
+        <div class="urls-section">
+            <div class="section-title">My URLs</div>
+            <div id="urlsList">
+                <div class="empty-message">No URLs added yet. Add your first URL above!</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'homepage_urls';
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        function loadUrls() {
+            const data = localStorage.getItem(STORAGE_KEY);
+            return data ? JSON.parse(data) : [];
+        }
+
+        function saveUrls(urls) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(urls));
+            updateStats();
+        }
+
+        function updateStats() {
+            const urls = loadUrls();
+            const statsDiv = document.getElementById('stats');
+            if (urls.length > 0) {
+                statsDiv.textContent = `📊 Total URLs: ${urls.length}`;
+            } else {
+                statsDiv.textContent = '';
+            }
+        }
+
+        function addUrl() {
+            const title = document.getElementById('title').value.trim();
+            const url = document.getElementById('url').value.trim();
+            const description = document.getElementById('description').value.trim();
+
+            if (!title || !url) {
+                alert('Please enter both title and URL');
+                return;
+            }
+
+            // Validate URL format
+            try {
+                new URL(url);
+            } catch (e) {
+                alert('Please enter a valid URL');
+                return;
+            }
+
+            const urls = loadUrls();
+            urls.push({
+                id: Date.now(),
+                title,
+                url,
+                description,
+                createdAt: new Date().toISOString()
+            });
+
+            saveUrls(urls);
+            renderUrls();
+            resetForm();
+        }
+
+        function deleteUrl(id) {
+            if (confirm('Are you sure you want to delete this URL?')) {
+                let urls = loadUrls();
+                urls = urls.filter(u => u.id !== id);
+                saveUrls(urls);
+                renderUrls();
+            }
+        }
+
+        function editUrl(id) {
+            const urls = loadUrls();
+            const urlItem = urls.find(u => u.id === id);
+
+            if (urlItem) {
+                document.getElementById('title').value = urlItem.title;
+                document.getElementById('url').value = urlItem.url;
+                document.getElementById('description').value = urlItem.description;
+
+                deleteUrl(id);
+                document.getElementById('title').focus();
+            }
+        }
+
+        function renderUrls() {
+            const urls = loadUrls();
+            const urlsList = document.getElementById('urlsList');
+
+            if (urls.length === 0) {
+                urlsList.innerHTML = '<div class="empty-message">No URLs added yet. Add your first URL above!</div>';
+                return;
+            }
+
+            urlsList.innerHTML = urls.map(item => `
+                <div class="url-item">
+                    <div class="url-title">${escapeHtml(item.title)}</div>
+                    <a href="${escapeHtml(item.url)}" target="_blank" class="url-link">${escapeHtml(item.url)}</a>
+                    ${item.description ? `<div class="url-description">${escapeHtml(item.description)}</div>` : ''}
+                    <div class="url-actions">
+                        <button class="btn-primary btn-small" onclick="editUrl(${item.id})">✏️ Edit</button>
+                        <button class="btn-danger btn-small" onclick="deleteUrl(${item.id})">🗑️ Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function resetForm() {
+            document.getElementById('title').value = '';
+            document.getElementById('url').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('title').focus();
+        }
+
+        function exportData() {
+            const urls = loadUrls();
+            const dataStr = JSON.stringify(urls, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `homepage_urls_${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            alert('Data exported successfully!');
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+                    
+                    if (!Array.isArray(importedData)) {
+                        alert('Invalid file format. Expected an array of URLs.');
+                        return;
+                    }
+
+                    // Validate imported data
+                    const validData = importedData.filter(item => 
+                        item.title && item.url && typeof item.title === 'string' && typeof item.url === 'string'
+                    );
+
+                    if (validData.length === 0) {
+                        alert('No valid URLs found in the file.');
+                        return;
+                    }
+
+                    const currentUrls = loadUrls();
+                    const merged = [...currentUrls, ...validData];
+                    saveUrls(merged);
+                    renderUrls();
+                    alert(`Successfully imported ${validData.length} URL(s)!`);
+                } catch (error) {
+                    alert('Error reading file. Please make sure it\'s a valid JSON file.');
+                    console.error('Import error:', error);
+                }
+            };
+            reader.readAsText(file);
+
+            // Reset input
+            event.target.value = '';
+        }
+
+        function clearAllData() {
+            if (confirm('⚠️ Are you sure? This will delete ALL your URLs and cannot be undone.')) {
+                if (confirm('Really sure? This is your last chance!')) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    renderUrls();
+                    updateStats();
+                    alert('All data cleared.');
+                }
+            }
+        }
+
+        // Initialize on page load
+        renderUrls();
+        updateStats();
+    </script>
+</body>
+</html>
